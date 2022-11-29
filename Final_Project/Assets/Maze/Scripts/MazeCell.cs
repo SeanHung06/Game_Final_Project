@@ -6,6 +6,7 @@ public class MazeCell : MonoBehaviour
 {
     // Start is called before the first frame update
     public IntVector2 coordinates;
+    public MazeRoom room;
 
     private int initializedEdgeCount;
     private MazeCellEdge [] edges = new MazeCellEdge[MazeDirections.Count];
@@ -32,5 +33,9 @@ public class MazeCell : MonoBehaviour
             }
             throw new System.InvalidOperationException("MazeCell has no uninitialized directions left.");
         }
+    }
+    public void Initialize(MazeRoom room){
+        room.Add(this);
+        transform.GetChild(0).GetComponent<Renderer>().material = room.settings.floorMaterial;
     }
 }

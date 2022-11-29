@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3731375596297848606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7276666, y: 0.46207976, z: 1.417207}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,7 +47,28 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  generationStepDelay: 0.01
+  generationStepDelay: 0.001
   cellPrefab: {fileID: 74928911691446366, guid: 99cbdb7948b0b475ab75e78670531859, type: 3}
   passagePrefab: {fileID: 1593547067924250989, guid: 89f645209dafd4b9a8bac4dc3725b0e3, type: 3}
-  wallPrefab: {fileID: 7677492450089171249, guid: 6cb1ccf3339da468aa5a066681827aa3, type: 3}
+  wallPrefab:
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: d25f855f61e4245ef9cfb61bde0d2494, type: 3}
+  - {fileID: 7677492450089171249, guid: 6cb1ccf3339da468aa5a066681827aa3, type: 3}
+  - {fileID: 7677492450089171249, guid: 2f6afed6f49f04a5cae355f995fda7d2, type: 3}
+  - {fileID: 7677492450089171249, guid: 26dfa86b0eb6649c48e6c389a8e215eb, type: 3}
+  doorPrefab: {fileID: 6571295722903479201, guid: 0954bde4b780c47acb5cb27643d7a817, type: 3}
+  doorProbability: 0.1
+  roomSettings:
+  - floorMaterial: {fileID: 2100000, guid: 1c11cea81f6074d4fbdffe5e8a7919e0, type: 2}
+    wallMaterial: {fileID: 2100000, guid: a278dd9af40ea437e9923b8f0b8a4e8d, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: 5af7657b03df94aec88ccb92aa5aea24, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 04f08731025aa4458adbd1a4f0c839ad, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: ae6c669c6022e47c7a143dfca70967da, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 9fa0e4f97e07041a0bc1fb3a831777c8, type: 2}
+  - floorMaterial: {fileID: 2100000, guid: be323dd4e6eaf46e1aca9c51898a35ea, type: 2}
+    wallMaterial: {fileID: 2100000, guid: 8af05beb455b34180992146660de89a4, type: 2}

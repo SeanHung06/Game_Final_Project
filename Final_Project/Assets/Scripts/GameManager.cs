@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public float time_limitation = 60.0f;
     public GameObject time_text;
+    public GameObject PlayerPerfab;
     
     internal GameObject player_obj;
     internal List<string> fruit_names = new List<string>{"apple", "avocado", "banana", "cherries", "lemon","peach", "peanut", "pear", "strawberry", "watermelon"};
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour
         rest_time = time_limitation;
 
         //Spawn player
-        player_prefab = (GameObject)Resources.Load(@"Standard Assets/Characters/FirstPersonCharacter/Prefabs/FPSController");
+        //player_prefab = (GameObject)Resources.Load(@"Standard Assets/Characters/FirstPersonCharacter/Prefabs/FPSController");
+        player_prefab = PlayerPerfab;
         if(player_prefab == null) Debug.Log("Wrong Path");
         else SpawnGameobject(player_prefab, "Player", new Vector3(0.0f, 1.0f, 0.0f));
 

@@ -36,12 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Maze/Scripts/Maze.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/DynamicShadowSettings.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/ButtonHandler.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/LerpControlledBob.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/PlatformSpecificContent.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeCell.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/TimedObjectActivator.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeDoor.cs" />
      <Compile Include="Assets/resources/Standard Assets/Environment/Water (Basic)/Scripts/WaterBasic.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/CameraRefocus.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/TouchPad.cs" />
@@ -52,24 +55,34 @@
      <Compile Include="Assets/resources/Standard Assets/Characters/FirstPersonCharacter/Scripts/RigidbodyFirstPersonController.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/AutoMoveAndRotate.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/MobileInput.cs" />
+     <Compile Include="Assets/Maze/Scripts/TestManager.cs" />
+     <Compile Include="Assets/Scripts/Fruit.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/FPSCounter.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/SimpleActivatorMenu.cs" />
      <Compile Include="Assets/resources/Standard Assets/Characters/FirstPersonCharacter/Scripts/FirstPersonController.cs" />
      <Compile Include="Assets/Scripts/GameManager.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/SimpleMouseRotator.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeRoomSettings.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/SmoothFollow.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazePassage.cs" />
      <Compile Include="Assets/resources/Low Poly Fruits/resources/fruits_tester.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/WaypointCircuit.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/TimedObjectDestructor.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeWall.cs" />
+     <Compile Include="Assets/Scripts/FruitManager.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/WaypointProgressTracker.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/DragRigidbody.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/StandaloneInput.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeCellEdge.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazePlayer.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/FollowTarget.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/ForcedReset.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/ParticleSystemDestroyer.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/ObjectResetter.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/AutoMobileShaderSwitch.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/AlphaButtonClickMask.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeRoom.cs" />
+     <Compile Include="Assets/Maze/Scripts/MazeDirection.cs" />
      <Compile Include="Assets/resources/Standard Assets/Utility/FOVKick.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/CrossPlatformInputManager.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/InputAxisScrollbar.cs" />
@@ -77,15 +90,8 @@
      <Compile Include="Assets/resources/Standard Assets/Utility/ActivateTrigger.cs" />
      <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs" />
      <Compile Include="Assets/resources/Standard Assets/Characters/FirstPersonCharacter/Scripts/HeadBob.cs" />
-     <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs" />
-     <Compile Include="Assets/Maze/Scripts/TestManager.cs" />
-     <Compile Include="Assets/Maze/Scripts/Maze.cs" />
-     <Compile Include="Assets/Maze/Scripts/MazeCell.cs" />
      <Compile Include="Assets/Maze/Scripts/IntVector2.cs" />
-     <Compile Include="Assets/Maze/Scripts/MazeDirection.cs" />
-     <Compile Include="Assets/Maze/Scripts/MazeCellEdge.cs" />
-     <Compile Include="Assets/Maze/Scripts/MazePassage.cs" />
-     <Compile Include="Assets/Maze/Scripts/MazeWall.cs" />
+     <Compile Include="Assets/resources/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

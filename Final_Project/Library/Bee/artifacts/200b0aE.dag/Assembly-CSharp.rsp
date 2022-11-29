@@ -356,7 +356,11 @@
 "Assets/Maze/Scripts/MazeCell.cs"
 "Assets/Maze/Scripts/MazeCellEdge.cs"
 "Assets/Maze/Scripts/MazeDirection.cs"
+"Assets/Maze/Scripts/MazeDoor.cs"
 "Assets/Maze/Scripts/MazePassage.cs"
+"Assets/Maze/Scripts/MazePlayer.cs"
+"Assets/Maze/Scripts/MazeRoom.cs"
+"Assets/Maze/Scripts/MazeRoomSettings.cs"
 "Assets/Maze/Scripts/MazeWall.cs"
 "Assets/Maze/Scripts/TestManager.cs"
 "Assets/resources/Low Poly Fruits/resources/fruits_tester.cs"
@@ -400,6 +404,8 @@
 "Assets/resources/Standard Assets/Utility/TimedObjectDestructor.cs"
 "Assets/resources/Standard Assets/Utility/WaypointCircuit.cs"
 "Assets/resources/Standard Assets/Utility/WaypointProgressTracker.cs"
+"Assets/Scripts/Fruit.cs"
+"Assets/Scripts/FruitManager.cs"
 "Assets/Scripts/GameManager.cs"
 -langversion:9.0
 

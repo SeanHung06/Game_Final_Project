@@ -7,7 +7,7 @@ public abstract class MazeCellEdge : MonoBehaviour
     // Start is called before the first frame update
     public MazeCell cell, otherCell;
 	public MazeDirection direction;
-    public void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction){
+    public virtual void Initialize(MazeCell cell, MazeCell otherCell, MazeDirection direction){
         this.cell = cell;
         this.otherCell = otherCell;
         this.direction = direction;
