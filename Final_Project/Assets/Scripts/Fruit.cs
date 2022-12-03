@@ -6,15 +6,20 @@ public class Fruit : MonoBehaviour
 {
     internal string fruitName;
     private void OnCollisionEnter(Collision other) {
-        if(other.transform.name == "Player" and ){
-            Debug.Log("The player pickup "+fruitName);
+        if(other.transform.name == "Player" && transform.gameObject.name == Sean_GameManager1.target_fruit_name){
+            // [Sean] Add the Score Update if we encounter the correct Fruit
+            Debug.Log("The player pickup "  +  transform.gameObject.name);
             Sean_GameManager1.Score += 1;
             Debug.Log(Sean_GameManager1.Score);
             Object.Destroy(transform.gameObject);
-
+            // [Sean]
         }
         else{
-            Debug.Log(other.transform.name);
+            // [Sean] Minus point if we encounter the wrong fruit 
+            Debug.Log("The player pickup "  +  transform.gameObject.name);
+            Sean_GameManager1.Score -= 1;
+            Object.Destroy(transform.gameObject);
+            //Debug.Log(other.transform.name);
         }
     }
     

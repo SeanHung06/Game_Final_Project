@@ -19,10 +19,12 @@ public class Sean_GameManager1 : MonoBehaviour
     private List<GameObject> fruit_prefabs;
 
     // [Sean] to add the feature of Scoring System 
-    private string target_fruit_name ;
+    public static string target_fruit_name ;
     public Text Target_Text;    
     public Text Score_Text;    
     public static int Score;
+    public Text Warning_Text;    
+    // [Sean]
     void Start()
     {
         //Variable initialize
@@ -42,6 +44,7 @@ public class Sean_GameManager1 : MonoBehaviour
         Score = 0;
         Score_Text.text = "Score: " + Score;
 
+        // [Sean]
 
     }
 
