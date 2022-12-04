@@ -23,7 +23,12 @@ public class Sean_GameManager1 : MonoBehaviour
     public Text Target_Text;    
     public Text Score_Text;    
     public static int Score;
+    // public bool is_wrong_fruit;
+    public static bool is_wrong_fruit;    
     public Text Warning_Text;    
+    public GameObject text_box;
+    private float timestamp_last_msg = 0.0f; // timestamp used to record when last message on GUI happened (after 7 sec, default msg appears)
+
     // [Sean]
     void Start()
     {
@@ -44,7 +49,10 @@ public class Sean_GameManager1 : MonoBehaviour
         Score = 0;
         Score_Text.text = "Score: " + Score;
 
-        // [Sean]
+        // [Sean] Set up the wrong fruit bool 
+        is_wrong_fruit = false;
+        timestamp_last_msg = 0.0f;
+
 
     }
 
@@ -58,6 +66,26 @@ public class Sean_GameManager1 : MonoBehaviour
 
         // [Sean] Check if the Player found the target fruit than we add the point 
         Score_Text.text = "Score: " + Score;
+
+        // [Sean] Show the warning of the Game that it is picking up the wrong fruit
+        if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
+        {
+            text_box.GetComponent<Text>().text = "";   
+        }
+        if (is_wrong_fruit){
+            text_box.GetComponent<Text>().text = "Picking up the wrong fruit!!";
+            timestamp_last_msg = Time.time;
+        }
+
+        is_wrong_fruit = false;
+
+
+        // is_wrong_fruit = false;
+
+        // if (!is_wrong_fruit){
+        //     Warning_Text.text = "";
+        // }
+
 
     }
     private GameObject SpawnGameobject(GameObject prefab, string objName, Vector3 pos){

@@ -17,7 +17,9 @@ public class Fruit : MonoBehaviour
         else{
             // [Sean] Minus point if we encounter the wrong fruit 
             Debug.Log("The player pickup "  +  transform.gameObject.name);
+            Sean_GameManager1.is_wrong_fruit = true;
             Sean_GameManager1.Score -= 1;
+            // [Sean] Add the warning when player pick up the wrong fruit
             Object.Destroy(transform.gameObject);
             //Debug.Log(other.transform.name);
         }
