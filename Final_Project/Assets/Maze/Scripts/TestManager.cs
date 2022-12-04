@@ -48,6 +48,9 @@ public class TestManager : MonoBehaviour
         while(randomCells.Count>0){
             Vector3 pos = randomCells[randomCells.Count-1].transform.position;
             randomCells.RemoveAt(randomCells.Count-1);
+            // [Sean] Add to Randomize the maze fruit 
+            FruitManagerInstance.InitializeTarget();
+            // [Sean]
             FruitManagerInstance.CreateTargetFruit(pos);
         }
     }
