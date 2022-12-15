@@ -324,7 +324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -256, y: -161}
+  m_AnchoredPosition: {x: -723, y: -161}
   m_SizeDelta: {x: 529.3271, y: 232.9847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525337539
@@ -675,7 +675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -193, y: 140}
+  m_AnchoredPosition: {x: -620, y: 140}
   m_SizeDelta: {x: 798.13, y: 188.8835}
   m_Pivot: {x: 0.5598429, y: 0.30148974}
 --- !u!1 &1867832487
@@ -688,7 +688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1867832489}
   - component: {fileID: 1867832488}
-  - component: {fileID: 1867832490}
+  - component: {fileID: 1867832492}
   - component: {fileID: 1867832491}
   m_Layer: 0
   m_Name: GameManager
@@ -728,26 +728,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1867832490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867832487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3bdd1ad1b6cf4293a98bc1755111b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time_limitation: 120
-  time_text: {fileID: 1554667515}
-  PlayerPerfab: {fileID: 0}
-  Walk: {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
-  Target_Text: {fileID: 1718696782}
-  Score_Text: {fileID: 525337539}
-  Warning_Text: {fileID: 2049228913}
-  text_box: {fileID: 2049228911}
 --- !u!82 &1867832491
 AudioSource:
   m_ObjectHideFlags: 0
@@ -758,7 +738,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e0cedb19910a245caa3bd841be1fe2ce, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -844,6 +824,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1867832492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867832487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b667f94fe88844246b587a6e11601faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_limitation: 120
+  time_text: {fileID: 1554667515}
+  PlayerPerfab: {fileID: 0}
+  Score_audio: {fileID: 8300000, guid: 5a2e5cbf168fb4855b0d805f41cf3ae0, type: 3}
+  Wrong_audio: {fileID: 8300000, guid: 0bd4bc9aa4fc44d81830684b32de4276, type: 3}
+  Target_Text: {fileID: 1718696782}
+  Score_Text: {fileID: 525337539}
+  Warning_Text: {fileID: 2049228913}
+  text_box: {fileID: 2049228911}
 --- !u!1 &2049228911
 GameObject:
   m_ObjectHideFlags: 0
