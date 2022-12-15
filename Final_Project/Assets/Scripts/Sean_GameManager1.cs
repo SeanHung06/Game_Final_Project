@@ -18,6 +18,13 @@ public class Sean_GameManager1 : MonoBehaviour
     private float rest_time;
     private List<GameObject> fruit_prefabs;
 
+    // [Sean add sound for scroing ]
+    private AudioSource source;
+    public AudioClip Score_audio;
+    public AudioClip Wrong_audio;
+
+    // [Sean add sound for getting points after success]
+
     // [Sean] to add the feature of Scoring System 
     public static string target_fruit_name ;
     public Text Target_Text;    
@@ -25,6 +32,7 @@ public class Sean_GameManager1 : MonoBehaviour
     public static int Score;
     // public bool is_wrong_fruit;
     public static bool is_wrong_fruit;    
+    public static bool is_target_fruit;    
     public Text Warning_Text;    
     public GameObject text_box;
     private float timestamp_last_msg = 0.0f; // timestamp used to record when last message on GUI happened (after 7 sec, default msg appears)
@@ -49,42 +57,53 @@ public class Sean_GameManager1 : MonoBehaviour
         Score = 0;
         Score_Text.text = "Score: " + Score;
 
-        // [Sean] Set up the wrong fruit bool 
+        // [Sean] Set up the check target fruit bool 
         is_wrong_fruit = false;
         timestamp_last_msg = 0.0f;
+        is_target_fruit = false;
 
-
+        // [Sean] Audio 
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //update rest time and change the time text
+        //[Sean] update rest time and change the time text
         rest_time -= Time.deltaTime;
         TMP_Text text = time_text.GetComponent<TMP_Text>();
         text.text = ((int)rest_time).ToString();
 
-        // [Sean] Check if the Player found the target fruit than we add the point 
-        Score_Text.text = "Score: " + Score;
 
         // [Sean] Show the warning of the Game that it is picking up the wrong fruit
+        Score_Text.text = "Score: " + Score;
+
         if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
         {
             text_box.GetComponent<Text>().text = "";   
         }
+        // [Sean] Check if the Player found the target fruit than we add the point 
+
+        if (is_target_fruit){
+            text_box.GetComponent<Text>().text = "Picking up the target fruit!!";
+            timestamp_last_msg = Time.time;
+            source.clip = Score_audio;
+            if (!source.isPlaying){
+                source.Play();
+            }
+        }
         if (is_wrong_fruit){
             text_box.GetComponent<Text>().text = "Picking up the wrong fruit!!";
             timestamp_last_msg = Time.time;
+            source.clip = Wrong_audio;
+            if (!source.isPlaying){
+                source.Play();
+            }
         }
 
         is_wrong_fruit = false;
+        is_target_fruit = false;
 
-
-        // is_wrong_fruit = false;
-
-        // if (!is_wrong_fruit){
-        //     Warning_Text.text = "";
-        // }
 
 
     }
