@@ -76,6 +76,7 @@ public class Sean_GameManager1 : MonoBehaviour
 
 
         // [Sean] Show the warning of the Game that it is picking up the wrong fruit
+        if (Score < 0){ Score =0 ;}
         Score_Text.text = "Score: " + Score;
 
         if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
@@ -91,6 +92,8 @@ public class Sean_GameManager1 : MonoBehaviour
             if (!source.isPlaying){
                 source.Play();
             }
+
+
         }
         if (is_wrong_fruit){
             text_box.GetComponent<Text>().text = "Picking up the wrong fruit!!";
@@ -99,11 +102,14 @@ public class Sean_GameManager1 : MonoBehaviour
             if (!source.isPlaying){
                 source.Play();
             }
+            GameObject target_fruit = GetRamdonFruitId();
+            target_fruit_name = target_fruit.name;
+            Debug.Log (target_fruit_name);
         }
-
         is_wrong_fruit = false;
         is_target_fruit = false;
 
+        Target_Text.text = "Target: " + target_fruit_name;
 
 
     }

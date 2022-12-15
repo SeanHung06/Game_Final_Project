@@ -13,7 +13,7 @@ public class Fruit : MonoBehaviour
             // [Sean] Add the Score Update if we encounter the correct Fruit
             Debug.Log("The player pickup "  +  transform.gameObject.name);
             Sean_GameManager1.is_target_fruit = true;
-            Sean_GameManager1.Score += 1;
+            Sean_GameManager1.Score += 300;
             Debug.Log(Sean_GameManager1.Score);
             Object.Destroy(transform.gameObject);
             // [Sean]
@@ -22,7 +22,7 @@ public class Fruit : MonoBehaviour
             // [Sean] Minus point if we encounter the wrong fruit 
             // [Sean] Add the warning when player pick up the wrong fruit
             Sean_GameManager1.is_wrong_fruit = true;
-            Sean_GameManager1.Score -= 1;
+            Sean_GameManager1.Score -= 100;
             Object.Destroy(transform.gameObject);
             //Debug.Log(other.transform.name);
         }
