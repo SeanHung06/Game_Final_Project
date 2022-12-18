@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public float time_limitation = 120.0f;
-    public GameObject time_text;
+    
+    //public GameObject time_text; [comment by Sean to use the Text ]
     public GameObject PlayerPerfab;
     
     internal GameObject player_obj;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     // [Sean] to add the feature of Scoring System 
     public static string target_fruit_name ;
     public Text Target_Text;    
+    public Text Time_Text;    
     public Text Score_Text;    
     public static int Score;
     // public bool is_wrong_fruit;
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
         Target_Text.text = "Target: " + target_fruit_name;
         Score = 0;
         Score_Text.text = "Score: " + Score;
+        Time_Text.text = "Time: " + rest_time;
 
         // [Sean] Set up the check target fruit bool 
         is_wrong_fruit = false;
@@ -71,8 +74,10 @@ public class GameManager : MonoBehaviour
     {
         //[Sean] update rest time and change the time text
         rest_time -= Time.deltaTime;
-        TMP_Text text = time_text.GetComponent<TMP_Text>();
-        text.text = ((int)rest_time).ToString();
+        
+        // TMP_Text text = time_text.GetComponent<TMP_Text>(); [comment by Sean to use the Text ]
+        // text.text = ((int)rest_time).ToString(); [comment by Sean to use the Text ]
+        Time_Text.text = "Time: " + ((int)rest_time).ToString();
 
 
         // [Sean] Show the warning of the Game that it is picking up the wrong fruit
@@ -110,7 +115,17 @@ public class GameManager : MonoBehaviour
         is_target_fruit = false;
 
         Target_Text.text = "Target: " + target_fruit_name;
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
 
     }
     private GameObject SpawnGameobject(GameObject prefab, string objName, Vector3 pos){
