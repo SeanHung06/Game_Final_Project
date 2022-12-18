@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MazePlayer : MonoBehaviour
 {
+
+    // [Sean add sound for walking]
+    private AudioSource source;
+    public AudioClip Walk;
+    // [Sean add sound for walking]
+
     private MazeCell currentCell;
     public void SetLocation(MazeCell cell){
         currentCell = cell;
@@ -16,19 +22,44 @@ public class MazePlayer : MonoBehaviour
             SetLocation(edge.otherCell);
         }
     }
+   void Start()
+    {
+        // Audio 
+        source = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
 			Move(MazeDirection.North);
+            source.clip = Walk;
+            if (!source.isPlaying){
+                source.Play();
+            }
 		}
 		else if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			Move(MazeDirection.East);
+            source.clip = Walk;
+            Debug.Log (source.isPlaying);
+
+            if (!source.isPlaying){
+                source.Play();
+            }
 		}
 		else if (Input.GetKeyDown(KeyCode.DownArrow)) {
 			Move(MazeDirection.South);
+            source.clip = Walk;
+            Debug.Log (source.isPlaying);
+
+            if (!source.isPlaying){
+                source.Play();
+            }
 		}
 		else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			Move(MazeDirection.West);
+            source.clip = Walk;
+            if (!source.isPlaying){
+                source.Play();
+            }
 		}
     }
 }
