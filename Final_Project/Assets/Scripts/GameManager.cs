@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject text_box;
     private float timestamp_last_msg = 0.0f; // timestamp used to record when last message on GUI happened (after 7 sec, default msg appears)
 
-    //[Joshua]Create maze and begin the game
+    //[Joshua] maze and player varialbles
     public int TargetNumber = 10;
     public Maze mazePrefab;
     private Maze mazeInstance;
@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
 	private GameObject playerInstance;
     public FruitManager FruitManagerPrefab;
     private FruitManager FruitManagerInstance;
+
+    //[Johsua] Enimies' varible
+    public GameObject enimyPrefab;
+    private GameObject enimyInstance;
 
     // [Sean]
     void Start()
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
         //Create Fruit Manager Instance
         FruitManagerInstance = Instantiate(FruitManagerPrefab) as FruitManager;
         FruitManagerInstance.InitializeTarget();
+
         //Create Target Fruits
         while(randomCells.Count>0){
             Vector3 pos = randomCells[randomCells.Count-1].transform.position;
@@ -172,6 +177,14 @@ public class GameManager : MonoBehaviour
             // [Sean]
             FruitManagerInstance.CreateTargetFruit(pos);
         }
+
+        //Create enimy
+        enimyInstance = Instantiate(enimyPrefab);
+        enimyInstance.AddComponent<Enimy>();
+        Vector3 p = mazeInstance.GetCell(mazeInstance.RandomCoordinates).transform.position;
+        p.y = 0.5f;
+        enimyInstance.transform.position = p;
+        enimyInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
 	private void RestartGame () {
@@ -195,12 +208,7 @@ public class GameManager : MonoBehaviour
         return res;
     }
 
-    private GameObject SpawnGameobject(GameObject prefab, string objName, Vector3 pos){
-        GameObject obj = Instantiate(prefab);
-        obj.name = objName;
-        obj.transform.position = pos;
-        return obj;
-    }
+    
     private GameObject GetRamdonFruitId(){
         int fruit_idx = Random.Range(0, fruit_names.Count);
         string fruitname = fruit_names[fruit_idx];
