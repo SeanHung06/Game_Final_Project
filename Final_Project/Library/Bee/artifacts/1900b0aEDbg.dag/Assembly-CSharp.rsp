@@ -358,6 +358,7 @@
 "Assets/DialogueTrigger.cs"
 "Assets/MainMenu.cs"
 "Assets/Player.cs"
+"Assets/SceneChange.cs"
 "Assets/SettingMenu.cs"
 "Assets/Supercyan Character Pack Animal People Sample/Scripts/AccessoryLogic.cs"
 "Assets/Supercyan Character Pack Animal People Sample/Scripts/AccessoryWearLogic.cs"
