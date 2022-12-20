@@ -142,11 +142,12 @@ public class GameManager : MonoBehaviour
         //[Joshua]Create Maze
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
-        
         //[Johsua]Get random maze grid for player and target fruits
         List<MazeCell> randomCells = GetRandomCellArray(TargetNumber+1);
-        Debug.Log(randomCells.Count);
-        
+        // Debug.Log(randomCells.Count);
+        // [Sean] Modify the Maze scale 
+        mazeInstance.transform.localScale = new Vector3(3f, 3f, 3f);
+
 
         //Create and initialize Player instance
         playerInstance = Instantiate(playerPrefab);
