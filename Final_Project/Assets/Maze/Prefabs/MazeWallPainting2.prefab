@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6039221470882742362}
   - component: {fileID: 7677492450089171249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MazeWallPainting2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 4305091580044631308}
   - component: {fileID: 6000400225903381381}
   - component: {fileID: 745833385537632889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 2363019312161362476}
   - component: {fileID: 3214757671115473659}
   - component: {fileID: 4103452369737303152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
