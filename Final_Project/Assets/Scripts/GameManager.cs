@@ -39,18 +39,26 @@ public class GameManager : MonoBehaviour
     public GameObject text_box;
     private float timestamp_last_msg = 0.0f; // timestamp used to record when last message on GUI happened (after 7 sec, default msg appears)
 
+    //[Joshua] maze and player varialbles
+    public int TargetNumber = 10;
+    public Maze mazePrefab;
+    private Maze mazeInstance;
+    public GameObject playerPrefab;
+	private GameObject playerInstance;
+    public FruitManager FruitManagerPrefab;
+    private FruitManager FruitManagerInstance;
+
+    //[Johsua] Enimies' varible
+    public GameObject enimyPrefab;
+    private GameObject enimyInstance;
+
     // [Sean]
     void Start()
     {
         //Variable initialize
         rest_time = time_limitation;
 
-        //Spawn player
-        //player_prefab = (GameObject)Resources.Load(@"Standard Assets/Characters/FirstPersonCharacter/Prefabs/FPSController");
-        player_prefab = PlayerPerfab;
-        if(player_prefab == null) Debug.Log("Wrong Path");
-        else SpawnGameobject(player_prefab, "Player", new Vector3(0.0f, 1.0f, 0.0f));
-
+        StartCoroutine(BeginGame());
 
         // [Sean]Select the target fruit for player to find 
         GameObject target_fruit = GetRamdonFruitId();
@@ -128,12 +136,75 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    private GameObject SpawnGameobject(GameObject prefab, string objName, Vector3 pos){
-        GameObject obj = Instantiate(prefab);
-        obj.name = objName;
-        obj.transform.position = pos;
-        return obj;
+
+    private IEnumerator BeginGame () {
+        
+        //[Joshua]Create Maze
+        mazeInstance = Instantiate(mazePrefab) as Maze;
+        yield return StartCoroutine(mazeInstance.Generate());
+        
+        //[Johsua]Get random maze grid for player and target fruits
+        List<MazeCell> randomCells = GetRandomCellArray(TargetNumber+1);
+        Debug.Log(randomCells.Count);
+        
+
+        //Create and initialize Player instance
+        playerInstance = Instantiate(playerPrefab);
+        Vector3 playerPos = randomCells[randomCells.Count-1].transform.position;
+        randomCells.RemoveAt(randomCells.Count-1);
+        playerPos.y = 10f;
+        playerInstance.transform.localPosition = playerPos;
+        playerInstance.transform.localScale = new Vector3(1f, 0.4f, 1f);
+        playerInstance.transform.name = "Player";
+        playerInstance.transform.gameObject.layer = LayerMask.NameToLayer("Player");
+        playerInstance.transform.tag = "Player";
+        CapsuleCollider collider = playerInstance.GetComponent<CapsuleCollider>();
+        collider.radius = 0.38f;
+
+        //Create Fruit Manager Instance
+        FruitManagerInstance = Instantiate(FruitManagerPrefab) as FruitManager;
+        FruitManagerInstance.InitializeTarget();
+
+        //Create Target Fruits
+        while(randomCells.Count>0){
+            Vector3 pos = randomCells[randomCells.Count-1].transform.position;
+            randomCells.RemoveAt(randomCells.Count-1);
+            // [Sean] Add to Randomize the maze fruit 
+            FruitManagerInstance.InitializeTarget();
+            // [Sean]
+            FruitManagerInstance.CreateTargetFruit(pos);
+        }
+
+        //Create and initialize enimy
+        enimyInstance = Instantiate(enimyPrefab);
+        Vector3 p = mazeInstance.GetCell(mazeInstance.RandomCoordinates).transform.position;
+        p.y = 0.5f;
+        enimyInstance.transform.position = p;
+        enimyInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
+
+	private void RestartGame () {
+        StopAllCoroutines();
+        Object.Destroy(mazeInstance.gameObject);
+        if (playerInstance != null) {
+			Object.Destroy(playerInstance.gameObject);
+		}
+        Object.Destroy(FruitManagerInstance.gameObject);
+        StartCoroutine(BeginGame());
+    }
+    private List<MazeCell> GetRandomCellArray(int number){
+        List<MazeCell> res = new List<MazeCell>();
+        int[,] mem = new int [mazeInstance.size.x, mazeInstance.size.z];
+        while(res.Count<number){
+            IntVector2 coor = mazeInstance.RandomCoordinates;
+            if(mem[coor.x, coor.z]==1)continue;
+            res.Add(mazeInstance.GetCell(coor));
+            mem[coor.x, coor.z] = 1;
+        }
+        return res;
+    }
+
+    
     private GameObject GetRamdonFruitId(){
         int fruit_idx = Random.Range(0, fruit_names.Count);
         string fruitname = fruit_names[fruit_idx];
