@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -908,7 +908,8 @@ MonoBehaviour:
   Score_Text: {fileID: 525337539}
   Warning_Text: {fileID: 2049228913}
   text_box: {fileID: 2049228911}
-  TargetNumber: 10
+  TargetNumber: 5
+  Total_Fruit_Number: 1
   mazePrefab: {fileID: 756168334063917233, guid: 9705b048744e943d6b26af911909d46f, type: 3}
   playerPrefab: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
   FruitManagerPrefab: {fileID: 3185611680278048129, guid: b3626f14f139b40f98e696810999efe2, type: 3}
