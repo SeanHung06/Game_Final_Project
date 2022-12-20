@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     //[Joshua] maze and player varialbles
     public int TargetNumber = 10;
+    // [Sean] Add total Fruit number
+    public int Total_Fruit_Number = 15;
     public Maze mazePrefab;
     private Maze mazeInstance;
     public GameObject playerPrefab;
@@ -115,9 +117,7 @@ public class GameManager : MonoBehaviour
             if (!source.isPlaying){
                 source.Play();
             }
-            GameObject target_fruit = GetRamdonFruitId();
-            target_fruit_name = target_fruit.name;
-            Debug.Log (target_fruit_name);
+
         }
         is_wrong_fruit = false;
         is_target_fruit = false;
@@ -143,10 +143,11 @@ public class GameManager : MonoBehaviour
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
         //[Johsua]Get random maze grid for player and target fruits
-        List<MazeCell> randomCells = GetRandomCellArray(TargetNumber+1);
-        // Debug.Log(randomCells.Count);
+        List<MazeCell> randomCells = GetRandomCellArray(Total_Fruit_Number+1);
         // [Sean] Modify the Maze scale 
         mazeInstance.transform.localScale = new Vector3(3f, 3f, 3f);
+        // [Sean] Get the Target Fruit List
+        List<MazeCell> targetCells = GetRandomCellArray(TargetNumber+1);
 
 
         //Create and initialize Player instance
@@ -165,8 +166,7 @@ public class GameManager : MonoBehaviour
         //Create Fruit Manager Instance
         FruitManagerInstance = Instantiate(FruitManagerPrefab) as FruitManager;
         FruitManagerInstance.InitializeTarget();
-
-        //Create Target Fruits
+        //Create Target Fruits // [Sean] Should be total Fruits  
         while(randomCells.Count>0){
             Vector3 pos = randomCells[randomCells.Count-1].transform.position;
             randomCells.RemoveAt(randomCells.Count-1);
@@ -174,8 +174,14 @@ public class GameManager : MonoBehaviour
             FruitManagerInstance.InitializeTarget();
             // [Sean]
             FruitManagerInstance.CreateTargetFruit(pos);
+            target_fruit_name = FruitManagerInstance.getFruitName();
         }
-
+        // [Sean] Create the Begin Game Target Fruit 
+        while(targetCells.Count>0){
+            Vector3 pos = targetCells[targetCells.Count-1].transform.position;
+            targetCells.RemoveAt(targetCells.Count-1);
+            FruitManagerInstance.CreateTargetFruit(pos);
+        }
         //Create and initialize enimy
         enimyInstance = Instantiate(enimyPrefab);
         Vector3 p = mazeInstance.GetCell(mazeInstance.RandomCoordinates).transform.position;

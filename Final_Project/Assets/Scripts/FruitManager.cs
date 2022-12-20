@@ -10,7 +10,10 @@ public class FruitManager : MonoBehaviour
     private GameObject targetFruitInstance;
     private string targetFruitName;
     private int targetIndex = 0;
-    
+    // [Sean] add to retrieve the Fruit name
+    public string getFruitName() {
+        return targetFruitName;
+    }
     public void CreateTargetFruit(Vector3 pos){
         GameObject prefab = FruitPrefab[targetIndex];
         targetFruitName = prefab.transform.name;
@@ -18,11 +21,13 @@ public class FruitManager : MonoBehaviour
         targetFruitInstance.transform.parent = transform;
         pos.y = height;
         targetFruitInstance.transform.position = pos;
-        targetFruitInstance.transform.localScale = new Vector3(20f, 20f, 20f);
+        // [Sean] Update the Fruit Scale to fit the maze size
+        targetFruitInstance.transform.localScale = new Vector3(40f, 40f, 40f);
         targetFruitInstance.AddComponent<Fruit>();
         targetFruitInstance.AddComponent<SphereCollider>();
     }
     public void InitializeTarget(){
         targetIndex = Random.Range(0, FruitPrefab.Length);
     }
+
 }
