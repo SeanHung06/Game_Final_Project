@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 574917740365747988}
   - component: {fileID: 74928911691446366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MazeCell
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 8010911015752565687, guid: f8ca192b829c646279e7129df0b8a21c, type: 3}
       propertyPath: m_Name
       value: Quad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010911015752565687, guid: f8ca192b829c646279e7129df0b8a21c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ca192b829c646279e7129df0b8a21c, type: 3}

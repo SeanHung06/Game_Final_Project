@@ -58,11 +58,6 @@ public class GameManager : MonoBehaviour
         //Variable initialize
         rest_time = time_limitation;
 
-        //Spawn player
-        //player_prefab = (GameObject)Resources.Load(@"Standard Assets/Characters/FirstPersonCharacter/Prefabs/FPSController");
-        //player_prefab = PlayerPerfab;
-        //if(player_prefab == null) Debug.Log("Wrong Path");
-        //else SpawnGameobject(player_prefab, "Player", new Vector3(0.0f, 1.0f, 0.0f));
         StartCoroutine(BeginGame());
 
         // [Sean]Select the target fruit for player to find 
@@ -153,7 +148,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(randomCells.Count);
         
 
-        //Create Player instance
+        //Create and initialize Player instance
         playerInstance = Instantiate(playerPrefab);
         Vector3 playerPos = randomCells[randomCells.Count-1].transform.position;
         randomCells.RemoveAt(randomCells.Count-1);
@@ -161,6 +156,8 @@ public class GameManager : MonoBehaviour
         playerInstance.transform.localPosition = playerPos;
         playerInstance.transform.localScale = new Vector3(1f, 0.4f, 1f);
         playerInstance.transform.name = "Player";
+        playerInstance.transform.gameObject.layer = LayerMask.NameToLayer("Player");
+        playerInstance.transform.tag = "Player";
         CapsuleCollider collider = playerInstance.GetComponent<CapsuleCollider>();
         collider.radius = 0.38f;
 
@@ -178,9 +175,8 @@ public class GameManager : MonoBehaviour
             FruitManagerInstance.CreateTargetFruit(pos);
         }
 
-        //Create enimy
+        //Create and initialize enimy
         enimyInstance = Instantiate(enimyPrefab);
-        enimyInstance.AddComponent<Enimy>();
         Vector3 p = mazeInstance.GetCell(mazeInstance.RandomCoordinates).transform.position;
         p.y = 0.5f;
         enimyInstance.transform.position = p;
