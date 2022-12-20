@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+	[SerializeField] private GameObject player;
+	void Update()
     {
-        Debug.Log("Scene Change!");
-        //SceneManager.LoadScene(2);
+    	if (Vector3.Distance(player.transform.position, transform.position) < 1f)
+	    {
+	         SceneManager.LoadScene(2);
+	    }
     }
 }
