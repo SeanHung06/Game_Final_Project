@@ -42,7 +42,7 @@ public class Enimy : MonoBehaviour
 
         //Init fov
         PlayerRef = GameObject.FindGameObjectWithTag("Player");
-
+        
         StartCoroutine(FOVRoutine());
     }
 
