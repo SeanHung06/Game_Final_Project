@@ -31,6 +31,19 @@ public class FruitManager : MonoBehaviour
         targetFruitInstance.AddComponent<Fruit>();
         targetFruitInstance.AddComponent<SphereCollider>();
     }
+    public void CreateNewTargetFruit(int targetIndex,Vector3 pos){
+        GameObject prefab = FruitPrefab[targetIndex];
+        targetFruitName = prefab.transform.name;
+        targetFruitInstance = Instantiate(prefab);
+        targetFruitInstance.transform.parent = transform;
+        pos.y = height;
+        targetFruitInstance.transform.position = pos;
+        // [Sean] Update the Fruit Scale to fit the maze size
+        targetFruitInstance.transform.localScale = new Vector3(40f, 40f, 40f);
+        targetFruitInstance.AddComponent<Fruit>();
+        targetFruitInstance.AddComponent<SphereCollider>();
+    }
+
     // [Sean] Add to clarify the Target and Other Fruits 
     public void CreateOtherFruit(Vector3 pos){
         GameObject prefab = FruitPrefab[otherIndex];

@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     public GameObject enimyPrefab;
     private GameObject enimyInstance;
 
+
+
     // [Sean]
     void Start()
     {
@@ -78,6 +80,10 @@ public class GameManager : MonoBehaviour
 
         // [Sean] Audio 
         source = GetComponent<AudioSource>();
+
+
+  
+
     }
 
     // Update is called once per frame
@@ -94,7 +100,10 @@ public class GameManager : MonoBehaviour
         // [Sean] Show the warning of the Game that it is picking up the wrong fruit
         if (Score < 0){ Score =0 ;}
         Score_Text.text = "Score: " + Score;
-
+        if (rest_time <= 0){
+            rest_time = 0 ;
+            // TODO End Game !!! 
+        } 
         if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
         {
             text_box.GetComponent<Text>().text = "";   
@@ -109,7 +118,13 @@ public class GameManager : MonoBehaviour
                 source.Play();
             }
 
-
+            // [Sean] After we pick up the correct fruit we randomly generate another target to balance the total target num
+            List<MazeCell> newtargetCells = GetRandomCellArray(TargetNumber+1);
+            while(newtargetCells.Count>0 ){
+                Vector3 pos_new = newtargetCells[newtargetCells.Count-1].transform.position;
+                newtargetCells.RemoveAt(newtargetCells.Count-1);
+                FruitManagerInstance.CreateTargetFruit(pos_new);
+            }
         }
         if (is_wrong_fruit){
             text_box.GetComponent<Text>().text = "Picking up the wrong fruit!!";
@@ -165,12 +180,11 @@ public class GameManager : MonoBehaviour
 
         //Create Fruit Manager Instance
         FruitManagerInstance = Instantiate(FruitManagerPrefab) as FruitManager;
-        
-        //FruitManagerInstance.InitializeOther();
-        //FruitManagerInstance.InitializeTarget();
+        FruitManagerInstance.InitializeOther();
+        FruitManagerInstance.InitializeTarget();
+
         //Create Target Fruits // [Sean] Should be total Fruits  
         while(randomCells.Count>0){
-            Debug.Log(randomCells.Count);
             Vector3 pos = randomCells[randomCells.Count-1].transform.position;
             randomCells.RemoveAt(randomCells.Count-1);
             // [Sean] Add to Randomize the maze fruit 
@@ -181,6 +195,7 @@ public class GameManager : MonoBehaviour
         // [Sean] Create the Begin Game Target Fruit 
         while(targetCells.Count>0 ){
             Vector3 pos_1 = targetCells[targetCells.Count-1].transform.position;
+            Debug.Log(pos_1);
             targetCells.RemoveAt(targetCells.Count-1);
             FruitManagerInstance.CreateTargetFruit(pos_1);
             target_fruit_name = FruitManagerInstance.getFruitName();
