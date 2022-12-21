@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
             e.speed = SpeedOfEnemy;
             e.transform.parent = EnemyManagerInstance.transform;
         }
+        game_started = true;
     }
 
 	private void RestartGame () {
