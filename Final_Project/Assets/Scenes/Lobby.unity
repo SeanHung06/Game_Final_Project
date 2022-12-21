@@ -4965,11 +4965,15 @@ MonoBehaviour:
     - Try to avoid the enemy who will attack you and find the target fruit as soon
       as possible !
     - If you are attacked by the Dog Fighter then your points will be deduct with
-      30 points !
-    - 'By finding the correct fruit, you will gain 100 points.  '
-    - But you will lose 50 points if you find a wring fruit!
-    - Please be carefull with you selection.
-    - Wish you good luck!
+      200 points !
+    - 'By finding the correct fruit, you will gain 300 points.  '
+    - But you will lose 100 points if you find a wrong fruit!
+    - 'Please be carefull with you selection.
+
+      Press P will pause the Game,
+      Press O will Return to the Level Selection of the Game.'
+    - "Press R will Restart the Game \n"
+    - Enter the tent to start your jounery. Wish you good luck!
 --- !u!1001 &567389347
 PrefabInstance:
   m_ObjectHideFlags: 0

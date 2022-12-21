@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -108,6 +109,13 @@ public class GameManager : MonoBehaviour
             // [Sean] Press R to Restart the Game
             if (Input.GetKeyDown(KeyCode.R)){
                 RestartGame();
+            }
+
+            // [Sean] Press O to Return Level Choose
+
+            if (Input.GetKeyDown(KeyCode.O)){
+                    playerInstance.GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().mouseLook.SetCursorLock(false);
+                	SceneManager.LoadScene(2);
             }
 
         } 

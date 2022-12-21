@@ -8,12 +8,12 @@ public class LevelChoose : MonoBehaviour
     public void EasyLevel()
     {
         Debug.Log("Load Easy");
-        //SceneManager.LoadScene(3);
+        SceneManager.LoadScene(3);
     }
     public void HardLevel()
     {
     	Debug.Log("Load Hard");
-        //SceneManager.LoadScene(4);
+        SceneManager.LoadScene(4);
     }
     public void Return(){
     	SceneManager.LoadScene(1);
