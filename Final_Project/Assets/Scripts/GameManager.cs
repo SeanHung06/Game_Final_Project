@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour
     private bool end_game;    
     public Text End_Text;    
 
-    // [Sean]
+    //  [Sean] Firework Object 
+    public GameObject Firework;
+
     void Start()
     {
         //Variable initialize
@@ -86,7 +88,9 @@ public class GameManager : MonoBehaviour
         // [Sean] End game setting
         End_Text.GetComponent<Text>().enabled = false;
 
-  
+        // [Sean] Firework Object set false at first and enable it when the games is about to end
+        Firework.SetActive(false);
+
 
     }
 
@@ -110,7 +114,10 @@ public class GameManager : MonoBehaviour
             end_game = true;
             End_Text.GetComponent<Text>().enabled = true;
             // [Sean] Freeze the Game
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
+            // [Sean] Firework enable
+            Firework.SetActive(true);
+
             // [Sean] Press R to Restart the Game
             if (Input.GetKeyDown(KeyCode.R)){
                 RestartGame();
