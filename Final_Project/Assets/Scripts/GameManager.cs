@@ -50,9 +50,14 @@ public class GameManager : MonoBehaviour
     public FruitManager FruitManagerPrefab;
     private FruitManager FruitManagerInstance;
 
-    //[Johsua] Enimies' varible
-    public GameObject enimyPrefab;
+    //[Johsua] Enemies' varible
+    public GameObject EnemyManagerPrefab;
+    private GameObject EnemyManagerInstance;
+    public Enimy enimyPrefab;
     private GameObject enimyInstance;
+    public int NumberOfEnemy = 5;
+    public float SpeedOfEnemy = 1.5f;
+    private List<Enimy> EnemyArray;
 
     //[Sean] End Game Control
     private bool end_game;    
@@ -90,7 +95,6 @@ public class GameManager : MonoBehaviour
 
         // [Sean] Firework Object set false at first and enable it when the games is about to end
         Firework.SetActive(false);
-        
         // [Sean] Maze not started
         game_started = false;
 
@@ -224,7 +228,20 @@ public class GameManager : MonoBehaviour
             target_fruit_name = FruitManagerInstance.getFruitName();
         }
 
-
+        //Create and initialize enemy
+        EnemyManagerInstance = Instantiate(EnemyManagerPrefab);
+        List<MazeCell> enemyPos = GetRandomCellArray(NumberOfEnemy);
+        EnemyArray = new List<Enimy>();
+        foreach(MazeCell pos in enemyPos)
+        {
+            Vector3 p = pos.transform.position;
+            Enimy e = Instantiate(enimyPrefab) as Enimy;
+            p.y = 0.5f;
+            e.transform.position = p;
+            e.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            e.speed = SpeedOfEnemy;
+            e.transform.parent = EnemyManagerInstance.transform;
+        }
     }
 
 	private void RestartGame () {
@@ -234,6 +251,7 @@ public class GameManager : MonoBehaviour
 			Object.Destroy(playerInstance.gameObject);
 		}
         Object.Destroy(FruitManagerInstance.gameObject);
+        Object.Destroy(EnemyManagerInstance);
         StartCoroutine(BeginGame());
     }
     private List<MazeCell> GetRandomCellArray(int number){

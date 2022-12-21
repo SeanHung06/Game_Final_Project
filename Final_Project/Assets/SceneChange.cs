@@ -10,7 +10,7 @@ public class SceneChange : MonoBehaviour
     {
     	if (Vector3.Distance(player.transform.position, transform.position) < 1f)
 	    {
-	         SceneManager.LoadScene(2);
+			 SceneManager.LoadScene(2);
 	    }
     }
 }
