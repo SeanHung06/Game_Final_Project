@@ -4955,9 +4955,21 @@ MonoBehaviour:
   dialogue:
     name: Ryan
     senetences:
-    - 1
-    - 2
-    - 3
+    - Hi ! My name is Ryan , Welcome to the Amazing Maze Game for finding treats!
+    - You are now at a randomly generate maze and you will be given a target fruit
+      that is showing on the left top screen.
+    - You can find the Target Fruit to gain more points, there will be a Dog Fighter
+      that is your enemy!
+    - You can use the direction keys in your computer to walk front and back and
+      turn right or left.
+    - Try to avoid the enemy who will attack you and find the target fruit as soon
+      as possible !
+    - If you are attacked by the Dog Fighter then your points will be deduct with
+      30 points !
+    - 'By finding the correct fruit, you will gain 100 points.  '
+    - But you will lose 50 points if you find a wring fruit!
+    - Please be carefull with you selection.
+    - Wish you good luck!
 --- !u!1001 &567389347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9506,7 +9518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: aaa
+    name: Hello
     senetences:
     - Hello! Welcome to this game!
     - You will need to go through the maze and find the targeted item.
