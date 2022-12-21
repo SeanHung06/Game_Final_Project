@@ -19,7 +19,7 @@ public class DialogueShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 2f)
+        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f)
         {
             DialoguePanel.SetActive(true);
             // Determine which direction to rotate towards
