@@ -71,33 +71,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Variable initialize
-        end_game = false;
+        
         StartCoroutine(BeginGame());
-        rest_time = time_limitation;
-
-        // [Sean]Select the target fruit for player to find 
-        GameObject target_fruit = GetRamdonFruitId();
-        target_fruit_name = target_fruit.name;
-        Target_Text.text = "Target: " + target_fruit_name;
-        Score = 0;
-        Score_Text.text = "Score: " + Score;
-        Time_Text.text = "Time: " + rest_time;
-
-        // [Sean] Set up the check target fruit bool 
-        is_wrong_fruit = false;
-        timestamp_last_msg = 0.0f;
-        is_target_fruit = false;
-
         // [Sean] Audio 
         source = GetComponent<AudioSource>();
-        // [Sean] End game setting
-        End_Text.GetComponent<Text>().enabled = false;
 
-        // [Sean] Firework Object set false at first and enable it when the games is about to end
-        Firework.SetActive(false);
-        // [Sean] Maze not started
-        game_started = false;
-
+        
     }
 
     // Update is called once per frame
@@ -130,7 +109,6 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R)){
                 RestartGame();
             }
-
 
         } 
         if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
@@ -181,7 +159,31 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator BeginGame () {
+        end_game = false;
+        rest_time = time_limitation;
+        Score = 0;
+        game_started = false;
+        // [Sean]Select the target fruit for player to find 
+        GameObject target_fruit = GetRamdonFruitId();
+        target_fruit_name = target_fruit.name;
+        Target_Text.text = "Target: " + target_fruit_name;
         
+        Score_Text.text = "Score: " + Score;
+        Time_Text.text = "Time: " + rest_time;
+
+        // [Sean] Set up the check target fruit bool 
+        is_wrong_fruit = false;
+        timestamp_last_msg = 0.0f;
+        is_target_fruit = false;
+
+        // [Sean] End game setting
+        End_Text.GetComponent<Text>().enabled = false;
+
+        // [Sean] Firework Object set false at first and enable it when the games is about to end
+        Firework.SetActive(false);
+        // [Sean] Maze not started
+        
+
         //[Joshua]Create Maze
         mazeInstance = Instantiate(mazePrefab) as Maze;
         yield return StartCoroutine(mazeInstance.Generate());
@@ -197,7 +199,7 @@ public class GameManager : MonoBehaviour
         Vector3 playerPos = randomCells[randomCells.Count-1].transform.position;
         randomCells.RemoveAt(randomCells.Count-1);
         // [Sean] Update the player Y position 
-        playerPos.y = 0.1f;
+        playerPos.y = 1.0f;
         playerInstance.transform.localPosition = playerPos;
         playerInstance.transform.localScale = new Vector3(1f, 0.4f, 1f);
         playerInstance.transform.name = "Player";
