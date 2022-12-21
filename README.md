@@ -12,3 +12,7 @@ You can enter the direction keys in your computer to walk front and back and tur
 Every correct fruit you find you will gain 100 points from it, and every wrong fruit that you find will cost you 50 points from it ! Please be carefull with you selection. 
 
 You can also press P to pause and resume the game,
+
+Sung-Ming Huang:GameMange.cs 36-60 187-278 Enemy.cs FruitManager.cs 8-32
+
+Maze package: reference from https://catlikecoding.com/unity/tutorials/maze/
