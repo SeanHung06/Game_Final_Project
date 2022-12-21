@@ -13,9 +13,10 @@ Every correct fruit you find you will gain 100 points from it, and every wrong f
 
 You can also press P to pause and resume the game,
 
-Sung-Ming Huang:GameMange.cs 36-60 187-278 Enemy.cs FruitManager.cs 8-32
+Sung-Ming Huang:
+(1)Contribution: 1.Scenes: MazeGame, MazeGame_Hard 2.Script: GameMange.cs 36-60 187-278, Enimy.cs FruitManager.cs 8-32
 
-Maze package: reference from https://catlikecoding.com/unity/tutorials/maze/
+(2)Reference: Maze from https://catlikecoding.com/unity/tutorials/maze/
 
 Chin-Yu Tang:
 (1)Contribution: 1.Scenes: Lobby, Level, Start Scene 2.Script: SceneChange.cs, LevelChoose.cs, DialogueShow.cs, Waypoints.cs,WaypointMover.cs, SettingMenu.cs, DialogueTrigger.cs, DialogueManager.cs, Dialogue.cs, MainMenu.cs, Player.cs, Setting Menu.cs, Waypoint.cs
