@@ -224,13 +224,7 @@ public class GameManager : MonoBehaviour
             target_fruit_name = FruitManagerInstance.getFruitName();
         }
 
-        //Create and initialize enimy
-        enimyInstance = Instantiate(enimyPrefab);
-        Vector3 p = mazeInstance.GetCell(mazeInstance.RandomCoordinates).transform.position;
-        p.y = 0.5f;
-        enimyInstance.transform.position = p;
-        enimyInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        game_started = true;
+
     }
 
 	private void RestartGame () {
