@@ -61,14 +61,14 @@ public class GameManager : MonoBehaviour
     //  [Sean] Firework Object 
     public GameObject Firework;
 
+    // [Sean] Check if the Maze have created
+    public bool game_started;
     void Start()
     {
         //Variable initialize
-        rest_time = time_limitation;
-        TargetNumber = 5;
-        Total_Fruit_Number = 25;
         end_game = false;
         StartCoroutine(BeginGame());
+        rest_time = time_limitation;
 
         // [Sean]Select the target fruit for player to find 
         GameObject target_fruit = GetRamdonFruitId();
@@ -90,7 +90,9 @@ public class GameManager : MonoBehaviour
 
         // [Sean] Firework Object set false at first and enable it when the games is about to end
         Firework.SetActive(false);
-
+        
+        // [Sean] Maze not started
+        game_started = false;
 
     }
 
@@ -98,7 +100,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //[Sean] update rest time and change the time text
-        rest_time -= Time.deltaTime;
+        if (game_started){
+            rest_time -= Time.deltaTime;
+        }
         
         // TMP_Text text = time_text.GetComponent<TMP_Text>(); [comment by Sean to use the Text ]
         // text.text = ((int)rest_time).ToString(); [comment by Sean to use the Text ]
@@ -141,11 +145,9 @@ public class GameManager : MonoBehaviour
 
             // [Sean] After we pick up the correct fruit we randomly generate another target to balance the total target num
             List<MazeCell> newtargetCells = GetRandomCellArray(TargetNumber+1);
-            while(newtargetCells.Count>0 ){
-                Vector3 pos_new = newtargetCells[newtargetCells.Count-1].transform.position;
-                newtargetCells.RemoveAt(newtargetCells.Count-1);
-                FruitManagerInstance.CreateTargetFruit(pos_new);
-            }
+            Vector3 pos_new = newtargetCells[newtargetCells.Count-1].transform.position;
+            newtargetCells.RemoveAt(newtargetCells.Count-1);
+            FruitManagerInstance.CreateTargetFruit(pos_new);
         }
         if (is_wrong_fruit){
             text_box.GetComponent<Text>().text = "Picking up the wrong fruit!!";
@@ -190,7 +192,8 @@ public class GameManager : MonoBehaviour
         playerInstance = Instantiate(playerPrefab);
         Vector3 playerPos = randomCells[randomCells.Count-1].transform.position;
         randomCells.RemoveAt(randomCells.Count-1);
-        playerPos.y = 10f;
+        // [Sean] Update the player Y position 
+        playerPos.y = 0.1f;
         playerInstance.transform.localPosition = playerPos;
         playerInstance.transform.localScale = new Vector3(1f, 0.4f, 1f);
         playerInstance.transform.name = "Player";
@@ -216,7 +219,6 @@ public class GameManager : MonoBehaviour
         // [Sean] Create the Begin Game Target Fruit 
         while(targetCells.Count>0 ){
             Vector3 pos_1 = targetCells[targetCells.Count-1].transform.position;
-            Debug.Log(pos_1);
             targetCells.RemoveAt(targetCells.Count-1);
             FruitManagerInstance.CreateTargetFruit(pos_1);
             target_fruit_name = FruitManagerInstance.getFruitName();
@@ -228,6 +230,7 @@ public class GameManager : MonoBehaviour
         p.y = 0.5f;
         enimyInstance.transform.position = p;
         enimyInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        game_started = true;
     }
 
 	private void RestartGame () {
