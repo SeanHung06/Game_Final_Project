@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float time_limitation = 120.0f;
+    public float time_limitation = 5.0f;
     
     //public GameObject time_text; [comment by Sean to use the Text ]
     public GameObject PlayerPerfab;
@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
     public GameObject enimyPrefab;
     private GameObject enimyInstance;
 
-
+    //[Sean] End Game Control
+    private bool end_game;    
+    public Text End_Text;    
 
     // [Sean]
     void Start()
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         rest_time = time_limitation;
         TargetNumber = 5;
         Total_Fruit_Number = 25;
+        end_game = false;
         StartCoroutine(BeginGame());
 
         // [Sean]Select the target fruit for player to find 
@@ -80,7 +83,8 @@ public class GameManager : MonoBehaviour
 
         // [Sean] Audio 
         source = GetComponent<AudioSource>();
-
+        // [Sean] End game setting
+        End_Text.GetComponent<Text>().enabled = false;
 
   
 
@@ -102,7 +106,17 @@ public class GameManager : MonoBehaviour
         Score_Text.text = "Score: " + Score;
         if (rest_time <= 0){
             rest_time = 0 ;
-            // TODO End Game !!! 
+            // [Sean]End Game !!! 
+            end_game = true;
+            End_Text.GetComponent<Text>().enabled = true;
+            // [Sean] Freeze the Game
+            Time.timeScale = 0;
+            // [Sean] Press R to Restart the Game
+            if (Input.GetKeyDown(KeyCode.R)){
+                RestartGame();
+            }
+
+
         } 
         if (Time.time - timestamp_last_msg > 3.0f) // renew the msg by restating the initial goal
         {
